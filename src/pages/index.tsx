@@ -3,6 +3,8 @@ import Image from 'next/image'
 import camiseta1 from '../assets/Camisa-Maratona.png'
 import camiseta2 from '../assets/IgniteLab-T-shirt.png'
 import camiseta3 from '../assets/Igniter-abord-2-t-shirt.png'
+import { GetServerSideProps } from 'next'
+import Stripe from 'stripe'
 
 export default function Home() {
   return (
@@ -26,4 +28,8 @@ export default function Home() {
       </Product>
     </HomeContainer>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const response = await stripe.products.list()
 }
